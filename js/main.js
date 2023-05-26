@@ -1,7 +1,8 @@
 //Inizialite Always
 let countQuestion = 0;
 let points = 0;
-//Div's
+
+//Div's HTML
 let divCardPresentation = document.getElementById('card-presentation')
 let divCardGame = document.getElementById('game')
 let divTemplate = document.getElementById('plantilla');
@@ -37,36 +38,13 @@ const startGame = () => {
 const loadQuestions = () => {
   for (let index = 0; index < questions.length; index++) {
     let package = questions[index];
-    questionTemplate(index + 1, package);
+
+    questionsParameters({
+      numberQuestion: index +1,
+      case: package,
+    });
   }
 }
-
-const questionTemplate = (index, package) => {
-  contentCards.divCardGame.action.show();
-  divTemplate.innerHTML += `
-  <div class="container d-none question-${index} animate__animated ${animation.defaultInPut}">
-    <div class="card-auto card-width-auto">
-      <div class="card-content text-center">
-        <p class="title-card mt-1">Pregunta: ${index}</p>
-        <div class="content"><p class="subtitle-card">${package.question}</p>
-          <div class="item-button">
-          <ul class="group-list">
-                ${package.answers
-                  .map(
-                    (answers, dent) =>
-                      `<li class="options">  <button class="button options-answers list_${index} key_${index}_${dent}" id="${dent}">${answers}</button></li>`
-                  )
-                  .join('')}
-            </ul>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    `
-}
-
 
 const generateQuestion = () => {
   countQuestion += 1;
@@ -126,6 +104,7 @@ const protectButton = () => {
     }
   }, 1500);
 }
+
 const next = () => {
   divCardGame.classList.remove(animation.defaultInPut)
   divCardGame.classList.add(animation.defaultOutPut)
@@ -149,7 +128,6 @@ const finish = () => {
     countQuestion = 0;
     points = 0;
     resetGame();
-    
   });
 
 };
@@ -157,5 +135,29 @@ const finish = () => {
 const resetGame = () => {
   divTemplate.innerHTML= '';
   startGame();
-  
 };
+
+const questionsParameters = (_vm) => {
+  contentCards.divCardGame.action.show();
+  divTemplate.innerHTML += `
+  <div class="container d-none question-${_vm.numberQuestion} animate__animated ${animation.defaultInPut}">
+    <div class="card-auto card-width-auto">
+      <div class="card-content text-center">
+        <p class="title-card mt-1">Pregunta: ${_vm.numberQuestion}</p>
+        <div class="content"><p class="subtitle-card">${_vm.case.question}</p>
+          <div class="item-button">
+          <ul class="group-list">
+                ${_vm.case.answers
+                  .map(
+                    (answers, index) =>
+                      `<li class="options"><button class="button options-answers list_${_vm.numberQuestion} key_${_vm.numberQuestion}_${index}" id="${index}">${answers}</button></li>`
+                  )
+                  .join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    `;
+}
