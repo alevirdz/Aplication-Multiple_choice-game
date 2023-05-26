@@ -1,54 +1,67 @@
-// Lista de usuarios (simulada en este ejemplo)
-let users = [];
+let arrayNewQuestions = [];
 
-// Referencias a elementos HTML
-const addUserForm = document.getElementById('addUserForm');
-const nameInput = document.getElementById('nameInput');
-const emailInput = document.getElementById('emailInput');
+const addNewQuestion = document.getElementById('addNewQuestionForm');
+const questionInput = document.getElementById('Question');
+const optionInputOne = document.getElementById('option_one');
+const optionInputTwo = document.getElementById('option_two');
+const optionInputThree = document.getElementById('option_three');
+const optionInputFor = document.getElementById('option_for');
 const userList = document.getElementById('userList');
+
+const buttonContinue = document.getElementById('continue');
+const cardQuestionsStillAnswers = document.getElementById('cardQuestionsStillAnswers');
+const addQuestions = document.getElementById('addQuestions');
+
+
 
 // Función para agregar un nuevo usuario
 const addUser = (event) => {
   event.preventDefault();
 
   // Obtener los valores del formulario
-  const name = nameInput.value;
-  const email = emailInput.value;
+  const question = questionInput.value;
+  const option_one = optionInputOne.value;
+  const option_two = optionInputTwo.value;
+  const option_three = optionInputThree.value;
+  const option_for = optionInputFor.value;
 
   // Crear un nuevo objeto de usuario
   const newUser = {
-    name,
-    email
+    questions: question,
+    multipleOption: [option_one, option_two, option_three, option_for],
   };
 
   // Agregar el nuevo usuario a la lista
-  users.push(newUser);
+  arrayNewQuestions.push(newUser);
+  console.log(arrayNewQuestions);
+
+
+
 
   // Limpiar los campos del formulario
-  nameInput.value = '';
-  emailInput.value = '';
+  // nameInput.value = '';
+  // optionInput.value = '';
 
   // Actualizar la lista de usuarios
-  renderUserList();
+  // renderQuestionList();
 };
+
 
 // Función para eliminar un usuario
 const deleteUser = (index) => {
   // Eliminar el usuario de la lista por su índice
-  users.splice(index, 1);
+  arrayNewQuestions.splice(index, 1);
 
   // Actualizar la lista de usuarios
-  renderUserList();
+  renderQuestionList();
 };
 
 // Función para renderizar la lista de usuarios
-const renderUserList = () => {
+const renderQuestionList = () => {
   // Limpiar la lista existente
   userList.innerHTML = '';
 
-  // Recorrer la lista de usuarios y crear elementos HTML para cada uno
-  users.forEach((user, index) => {
-    // Crear elementos HTML utilizando template literals de ES6
+  arrayNewQuestions.forEach((user, index) => {
     const li = document.createElement('li');
     li.className = 'is-flex is-justify-content-space-between';
     const userInfo = document.createElement('div');
@@ -57,21 +70,59 @@ const renderUserList = () => {
     deleteButton.className = 'button is-danger';
     deleteButton.innerText = 'Eliminar';
 
-    // Agregar un controlador de eventos al botón de eliminar utilizando arrow functions de ES6
     deleteButton.addEventListener('click', () => {
       deleteUser(index);
     });
 
-    // Agregar elementos al elemento de lista (li)
     li.appendChild(userInfo);
     li.appendChild(deleteButton);
-
-    // Agregar el elemento de lista a la lista de usuarios (userList)
     userList.appendChild(li);
   });
 };
 
-// Agregar un controlador de eventos al formulario utilizando arrow functions de ES6
-addUserForm.addEventListener('submit', (event) => {
+
+addNewQuestion.addEventListener('submit', (event) => {
   addUser(event);
+});
+
+
+
+buttonContinue.addEventListener('click', (event) => {
+  event.preventDefault()
+  addNewQuestion.classList.add('d-none')
+  cardQuestionsStillAnswers.classList.remove('d-none')
+
+    arrayNewQuestions.forEach((package, index) => {
+      let templateBox = `
+      <div class="box" id="${index}">
+        <small> [${index}]</small> - <strong>${package.questions}</strong>
+        <div class="container" id="addOptions${index}"></div>
+      </div>`;
+      addQuestions.innerHTML += templateBox;
+
+      package.multipleOption.forEach((optionsAnswers, optionIndex) => {
+        let numberQuestion = index;
+        let addOptionsCard = document.getElementById('addOptions' + numberQuestion);
+        let templateCheckbox = `
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" class="options" value="${optionIndex}" id="${optionIndex}">
+              ${optionsAnswers}
+            </label>
+          </div>
+        `;
+        addOptionsCard.innerHTML += templateCheckbox;
+
+      })
+
+
+
+      //Agregando la respuesta segun el index
+      let preguntaNumero = 1;
+      if(preguntaNumero === index){
+        arrayNewQuestions[index].answer = "2";
+      }
+    })
+    
+    
 });
