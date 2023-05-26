@@ -1,0 +1,6 @@
+.navbar {
+    background-color: #db3838 !important;
+    min-height: 3.25rem;
+    position: relative;
+    z-index: 30;
+}

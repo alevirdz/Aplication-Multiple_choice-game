@@ -1,6 +1,6 @@
 //Inizialite Always
 let countQuestion = 0;
-let result = 0;
+let points = 0;
 //Div's
 let divCardPresentation = document.getElementById('card-presentation')
 let divCardGame = document.getElementById('game')
@@ -69,7 +69,7 @@ const questionTemplate = (index, package) => {
 
 
 const generateQuestion = () => {
-  countQuestion += 1
+  countQuestion += 1;
   if (countQuestion > 1) {
     setTimeout(() => {
       let currentQuestion = new Events(document.querySelector('.question-' + (countQuestion - 1)));
@@ -88,32 +88,44 @@ const userChoose = () => {
       let getChoseAnswer = element.id
       let correctAnswer = questions[countQuestion - 1].answer;
       let showCorrectAnswer = new Events(document.querySelector('.key_' + countQuestion + '_' + correctAnswer));
-      let currentQuestionNumber = document.querySelector('.question-' + countQuestion)
+      let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
 
       if (parseInt(getChoseAnswer) === correctAnswer) {
-        showCorrectAnswer.true()
-        result += 1; 
+        showCorrectAnswer.true();
+        points += 1; 
         setTimeout(() => {
           currentQuestionNumber.classList.remove(animation.defaultInPut);
           currentQuestionNumber.classList.add(animation.defaultOutPut)
         }, 1000)
         
       } else {
-        showCorrectAnswer.true()
+        showCorrectAnswer.true();
         currentQuestionNumber.classList.remove(animation.defaultInPut);
         setTimeout(() => {
           currentQuestionNumber.classList.add(animation.defaultOutPut)
-        }, 1000)
+        }, 1000);
           
       }
       
-      countQuestion === questions.length ?  finish() :  next();
+      let questionLimit  = questions.length;
+      countQuestion === questionLimit ?  finish() :  next();
+      protectButton();
 
     })
   })
 };
 
-
+const protectButton = () => {
+  let protectOptionsAnswers = document.getElementsByClassName('options-answers'); 
+  for (let i = 0; i < protectOptionsAnswers.length; i++) {
+    protectOptionsAnswers[i].disabled = true;
+  };
+  setTimeout(() => {
+    for (let i = 0; i < protectOptionsAnswers.length; i++) {
+      protectOptionsAnswers[i].disabled = false;
+    }
+  }, 1500);
+}
 const next = () => {
   divCardGame.classList.remove(animation.defaultInPut)
   divCardGame.classList.add(animation.defaultOutPut)
@@ -122,7 +134,7 @@ const next = () => {
 
 const finish = () => {
   let divResult = document.getElementById('results');
-  divResult.innerHTML = result +'/'+ countQuestion
+  divResult.innerHTML = points +'/'+ countQuestion
   divCardGame.classList.remove(animation.defaultInPut)
   divCardGame.classList.add(animation.defaultOutPut)
 
@@ -135,7 +147,7 @@ const finish = () => {
     contentCards.divFinishCard.action.hide();
     contentCards.divCardGame.action.show();
     countQuestion = 0;
-    result = 0;
+    points = 0;
     resetGame();
     
   });
@@ -143,7 +155,7 @@ const finish = () => {
 };
 
 const resetGame = () => {
-  divTemplate.innerHTML= ''
-  startGame()
+  divTemplate.innerHTML= '';
+  startGame();
   
 };
