@@ -1,8 +1,9 @@
 <?php include_once "layout/head.php"?>
 <?php include_once "layout/navbar.php"?>
 
-  <div class="container">
-    <section class="vertical-align animate__animated animate__heartBeat" id="card-presentation">
+
+<section class="container"  id="card-presentation">
+  <div class="vertical-align animate__animated animate__heartBeat">
     <div class="card background-card-width rotate-right"></div>
     <div class="card background-card-width rotate-left"></div>
       <div class="card card-width">
@@ -15,8 +16,11 @@
             </div>
           </div>
       </div>
-  </section>
   </div>
+</section>
+
+
+
   <div class="container">
     <section class="vertical-align-questions d-none animate__animated animate__slideInDown" id="game">
       <div class="card-auto background-card-width-game rotate-right"></div>

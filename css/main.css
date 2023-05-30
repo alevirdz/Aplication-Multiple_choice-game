@@ -1,14 +1,18 @@
 /* General */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Open sans', sans-serif;
 }
+
 body {
   display: flex;
   flex-direction: column;
 }
+
+
 footer {
   margin-top: auto;
   background-color: #f9f9f9;
@@ -16,29 +20,35 @@ footer {
 }
 
 :root {
-  --default-buttons: rgb(147 51 234 );
+  --default-buttons: rgb(147 51 234);
   --default-button-true: #12cc9e;
   --default-title: #363636;
   --default-subtitle: rgb(100 116 139);
-  --default-points-result: rgb(147 51 234 );
+  --default-points-result: rgb(147 51 234);
 }
+
 /* Helpers */
-.mt-1{
-    margin-top: 1rem !important;
+.mt-1 {
+  margin-top: 1rem !important;
 }
-.mt-2{
+
+.mt-2 {
   margin-top: 2rem !important;
 }
-.mt-10{
+
+.mt-10 {
   margin-top: 10rem !important;
 }
-.mt-40{
+
+.mt-40 {
   margin-top: 40rem !important;
 }
-.text-center{
+
+.text-center {
   text-align: center;
 }
-.d-none{
+
+.d-none {
   display: none;
 }
 
@@ -51,6 +61,7 @@ footer {
   margin-bottom: 0 !important;
   font-family: sans-serif;
 }
+
 .subtitle-card {
   color: var(--default-subtitle) !important;
   font-size: 1.25rem;
@@ -60,25 +71,30 @@ footer {
 /* Card presentation */
 .card {
   border-radius: 0.75rem;
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
   border: 0px !important;
   margin-top: -13rem;
 }
+
 .card-width {
   height: 13rem;
   width: 24rem;
 }
+
 .background-card-width {
   height: 13rem;
   width: 25rem;
 }
+
 .vertical-align {
   position: relative;
   top: 170%;
 }
+
 .rotate-right {
   transform: rotate(3deg);
 }
+
 .rotate-left {
   transform: rotate(-3deg);
 }
@@ -86,75 +102,87 @@ footer {
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .card {
     border-radius: 0.75rem;
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
     border: 0px !important;
     margin-top: -13rem !important;
   }
-  .card-width{
+
+  .card-width {
     width: 18em;
     margin: 0 auto;
   }
+
   .background-card-width {
     height: 13rem;
     width: auto;
     margin: 0 auto;
   }
+
   .vertical-align {
     position: relative;
     top: 220%;
   }
 
 }
+
 /* Card for questions */
 .card-auto {
   height: 23rem;
   border-radius: 0.75rem;
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
   border: 0px !important;
   margin-top: -23rem;
   background-color: white;
 }
+
 .card-width-auto {
   height: auto;
   width: 24rem;
 }
+
 .vertical-align-questions {
   position: relative;
   top: 100%;
 }
-.content ul{
-  margin-left:0 !important;
+
+.content ul {
+  margin-left: 0 !important;
 }
-.options{
+
+.options {
   list-style-type: none;
 }
+
 .options-answers {
   color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 19em;
   transition: all 800ms ease-in-out;
 }
+
 .options-answers:hover {
   color: rgb(237, 233, 241);
   background-color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 15em;
   transition: all 800ms ease;
 }
+
 /* Response correct */
 .true {
   color: rgb(236, 236, 236);
   background-color: var(--default-button-true) !important;
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 15em;
   transition: all 800ms ease-in-out;
 }
+
 .false {
   background-color: #f14668 !important;
 }
@@ -164,34 +192,39 @@ footer {
     height: auto;
     width: 22rem;
   }
+
   .background-card-width-game {
     width: auto;
   }
+
   .vertical-align-questions {
     position: relative;
     top: 140%;
   }
+
   .options-answers {
     color: var(--default-buttons);
-    border: 0.5px solid #dee2e6!important;
+    border: 0.5px solid #dee2e6 !important;
     border-radius: 9999px;
     font-weight: 600;
     width: 19em;
     transition: all 800ms ease-in-out;
   }
+
   .options-answers:hover {
     color: rgb(237, 233, 241);
     background-color: var(--default-buttons);
-    border: 0.5px solid #dee2e6!important;
+    border: 0.5px solid #dee2e6 !important;
     border-radius: 9999px;
     font-weight: 600;
     width: 15em;
     transition: all 800ms ease;
   }
+
   .true {
     color: rgb(236, 236, 236);
     background-color: var(--default-button-true) !important;
-    border: 0.5px solid #dee2e6!important;
+    border: 0.5px solid #dee2e6 !important;
     border-radius: 9999px;
     font-weight: 600;
     width: 15em;
@@ -207,11 +240,13 @@ footer {
   font-weight: bold;
   margin-bottom: 0px !important;
 }
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .card-width-end {
     width: 23em;
   }
 }
+
 /* button styles */
 .button {
   background-color: #fff;
@@ -225,36 +260,38 @@ footer {
   white-space: nowrap;
 }
 
-.button-start{
+.button-start {
   color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: auto;
   transition: all 800ms ease-in-out;
 }
-.button-start:hover{
+
+.button-start:hover {
   color: rgb(237, 233, 241);
   background-color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 7em;
   transition: all 800ms ease;
 }
 
-.button-restart{
+.button-restart {
   color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: auto;
   transition: all 800ms ease-in-out;
 }
-.button-restart:hover{
+
+.button-restart:hover {
   color: rgb(237, 233, 241);
   background-color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 11rem;
@@ -263,17 +300,18 @@ footer {
 
 .end-button {
   color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 330px;
   transition: all 800ms ease-in-out;
   margin-top: 1rem;
 }
+
 .end-button:hover {
   color: rgb(237, 233, 241);
   background-color: var(--default-buttons);
-  border: 0.5px solid #dee2e6!important;
+  border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
   width: 300px;
