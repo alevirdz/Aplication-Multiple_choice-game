@@ -1,7 +1,7 @@
 const  questions = [
 	{
             question: "¿Cómo se llama la capital de Mongolia?",
-            answers: [
+            multipleOption: [
             "Nilo",
              "Ulan Bator",
              "Reino Unido",
@@ -12,7 +12,7 @@ const  questions = [
     {
     
         question: "¿Cuándo acabó la II Guerra Mundial?",
-        answers: [
+        multipleOption: [
           '1758',
           '1980',
           '1910',
@@ -22,4 +22,3 @@ const  questions = [
     
     },
 ];
-

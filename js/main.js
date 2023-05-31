@@ -32,7 +32,6 @@ const startGame = () => {
   loadQuestions();
   generateQuestion();
   contentCards.cardPresentation.action.hide();
-
 }
 
 const loadQuestions = () => {
@@ -68,7 +67,7 @@ const userChoose = () => {
       let showCorrectAnswer = new Events(document.querySelector('.key_' + countQuestion + '_' + correctAnswer));
       let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
 
-      if (parseInt(getChoseAnswer) === correctAnswer) {
+      if (parseInt(getChoseAnswer) === parseInt(correctAnswer)) {
         showCorrectAnswer.true();
         points += 1; 
         setTimeout(() => {
@@ -147,7 +146,7 @@ const questionsParameters = (_vm) => {
         <div class="content"><p class="subtitle-card">${_vm.case.question}</p>
           <div class="item-button">
           <ul class="group-list">
-                ${_vm.case.answers
+                ${_vm.case.multipleOption
                   .map(
                     (answers, index) =>
                       `<li class="options"><button class="button options-answers list_${_vm.numberQuestion} key_${_vm.numberQuestion}_${index}" id="${index}">${answers}</button></li>`

@@ -4,23 +4,23 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-half">
-          <h1 class="title">Inicio de sesión</h1>
+          <h1 class="title">Sign in</h1>
           <form id="loginForm">
             <div class="field">
-              <label class="label">Correo electrónico</label>
+              <label class="label">Email</label>
               <div class="control">
-                <input class="input" type="email" id="emailInput" required>
+                <input class="input" type="email" id="emailInput" value="alevi@testing.com" required>
               </div>
             </div>
             <div class="field">
-              <label class="label">Contraseña</label>
+              <label class="label">Password</label>
               <div class="control">
-                <input class="input" type="password" id="passwordInput" required>
+                <input class="input" type="password" id="passwordInput" value="123123" required>
               </div>
             </div>
             <div class="field">
               <div class="control">
-                <button class="button is-primary" type="submit">Iniciar sesión</button>
+                <button class="button is-primary" type="submit">Login</button>
               </div>
             </div>
           </form>

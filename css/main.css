@@ -318,3 +318,23 @@ footer {
   transition: all 800ms ease;
   margin-top: 1rem;
 }
+
+
+/* estilos administrador */
+
+/* estilos para agregar las tarjetas */
+
+.panel-block {
+  align-items: center;
+  color: #363636;
+  display: block !important;
+  justify-content: flex-start;
+  padding: 0.5em 0.75em;
+}
+
+.listQuestions{
+  height: 316px;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
