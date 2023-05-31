@@ -1,7 +1,7 @@
 <?php include_once "layout/head.php"?>
 <?php include_once "layout/navbar.php"?>
 
-<section class="section" id="addNewQuestionForm">
+<section class="section" id="form">
     <div class="container">
       <h1 class="title">Add yours questions</h1>
       <form>
@@ -11,36 +11,19 @@
             <input class="input" type="text" id="Question" required>
           </div>
         </div>
+        <div id="inputOptionDynamic"></div>
+
         <div class="field">
-          <label class="label">Option 1</label>
           <div class="control">
-            <input class="input" type="text" id="option_one" required>
+            <button class="button is-primary" id="optionsQuestion">Agregar nueva respuesta</button>
           </div>
         </div>
-        <div class="field">
-          <label class="label">Option 2</label>
-          <div class="control">
-            <input class="input" type="text" id="option_two" required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Option 3</label>
-          <div class="control">
-            <input class="input" type="text" id="option_three" required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Option 4</label>
-          <div class="control">
-            <input class="input" type="text" id="option_for" required>
-          </div>
-        </div>
-        
         <div class="field">
           <div class="control">
             <button class="button is-primary" type="submit">Agregar</button>
           </div>
         </div>
+        
       </form>
     </div>
   </section>

@@ -1,13 +1,13 @@
 let arrayGameQuestions = [];
+let inputIndex = 0; 
+let arrayMultipleOption = [];
 
-const addNewQuestion = document.getElementById('addNewQuestionForm');
+//Add Question
+const form = document.getElementById('form');
 const questionInput = document.getElementById('Question');
-const optionInputOne = document.getElementById('option_one');
-const optionInputTwo = document.getElementById('option_two');
-const optionInputThree = document.getElementById('option_three');
-const optionInputFor = document.getElementById('option_for');
-const userList = document.getElementById('userList');
-
+//Options
+const buttonOptionsQuestion = document.getElementById('optionsQuestion');
+const addOptionDynamic = document.getElementById('inputOptionDynamic');
 //Actions
 const buttonContinue = document.getElementById('next');
 const questionsWithoutAnswer = document.getElementById('cardQuestionsWithoutAnswer');
@@ -16,20 +16,47 @@ const listQuestions = document.getElementById('listQuestions');
 
 const finishQuestion = document.getElementById('finalizarPreguntas');
 
-addNewQuestion.addEventListener('submit', (event) => {
+buttonOptionsQuestion.addEventListener('click', (event)=> {
   event.preventDefault();
-  const inputQuestion = questionInput.value;
-  const option_one = optionInputOne.value;
-  const option_two = optionInputTwo.value;
-  const option_three = optionInputThree.value;
-  const option_for = optionInputFor.value;
+  if(inputIndex === 4){
+    console.log("Limite")
+  }else{
+    inputIndex++
+    let templateInput = `
+    <div class="field">
+            <label class="label">Option ${inputIndex}</label>
+            <div class="control">
+              <input class="input add-option" type="text" id="option_${inputIndex}" required>
+            </div>
+          </div>
+    `;
+    addOptionDynamic.innerHTML += templateInput;
+  }
 
+});
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  
+  let inputs = document.querySelectorAll('.add-option');
+  inputs.forEach((input) => {
+    let getValueOption = input.value;
+    arrayMultipleOption.push(getValueOption);
+  });
+
+  console.log(arrayMultipleOption)
+  
   const createQuestion = {
-    question: inputQuestion,
-    multipleOption: [option_one, option_two, option_three, option_for],
+    question: questionInput.value,
+    multipleOption: arrayMultipleOption,
   };
 
   arrayGameQuestions.push(createQuestion);
+  arrayMultipleOption = []
+  inputs.forEach(function(input) {
+    let EmptytValueOption = input.value = '';
+  });
+
   renderListQuestions();
 });
 
