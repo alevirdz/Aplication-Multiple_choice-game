@@ -1,6 +1,6 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background: rgb(0 0 0) !important;">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" style="background: #afafaf !important">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
       </a>
   
@@ -12,16 +12,10 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Add questions
-        </a>
-  
-        <a class="navbar-item">
+      <div class="navbar-start">  
+        <a class="navbar-item" href="https://github.com/alevirdz/Multiple_choice_game" style="color:#9aa4ad !important;">
           Documentation
-        </a>
-  
-        
+        </a>   
       </div>
   
       <div class="navbar-end">

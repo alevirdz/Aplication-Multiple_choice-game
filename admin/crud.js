@@ -181,7 +181,7 @@ const templateForPanelOfQuestions = (_vm) => {
               <small> ${_vm.indice +1} .- </small> <strong>${_vm.package.question}</strong>
             </div>
             <div class="column">
-              <button class="button is-danger" onclick="deleteQuestion(${_vm.indice})">Danger</button>
+              <button class="button is-danger" onclick="deleteQuestion(${_vm.indice})">Remove</button>
             </div>
           </div>
           <div class="container" id="addOptions${_vm.indice}"></div>
