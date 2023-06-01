@@ -57,10 +57,9 @@ removeOptionAnswer.addEventListener('click', (event) => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  if(numberOption === 2){
+  if(numberOption >= 2){
     getOptionOfAnswer();
   }else{
-    //fix
     messageSystem({
       text: 'You must have at least two answers minimum',
       icon: 'error',
