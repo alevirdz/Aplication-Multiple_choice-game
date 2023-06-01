@@ -1,53 +1,84 @@
 let arrayGameQuestions = [];
-let inputIndex = 0; 
+let numberOption = 0; 
 let arrayMultipleOption = [];
 
 //Add Question
 const form = document.getElementById('form');
-const questionInput = document.getElementById('Question');
+
 //Options
-const buttonOptionsQuestion = document.getElementById('optionsQuestion');
-const addOptionDynamic = document.getElementById('inputOptionDynamic');
+const divOptionsQuestions = document.getElementById('OptionsQuestions');
+const addOptionAnswer = document.getElementById('AddOptionAnswer');
+const removeOptionAnswer = document.getElementById('removeOptionAnswer');
+
 //Actions
 const buttonContinue = document.getElementById('next');
-const questionsWithoutAnswer = document.getElementById('cardQuestionsWithoutAnswer');
+
+//Display list question
 const contentListQuestions = document.getElementById('content-list-question');
-const listQuestions = document.getElementById('listQuestions');
+const divListQuestions = document.getElementById('listQuestions');
+const saveQuestion = document.getElementById('saveQuestion');
 
-const finishQuestion = document.getElementById('finalizarPreguntas');
-
-buttonOptionsQuestion.addEventListener('click', (event)=> {
+addOptionAnswer.addEventListener('click', (event)=> {
   event.preventDefault();
-  if(inputIndex === 4){
-    console.log("Limite")
+  if(numberOption === 4){
+    messageSystem({
+      text: 'Maximum 4 answers',
+      icon: 'question',
+      confirmButtonText: 'Continue'
+    });
   }else{
-    inputIndex++
+    numberOption++
     let templateInput = `
     <div class="field">
-            <label class="label">Option ${inputIndex}</label>
+            <label class="label">Option ${numberOption}</label>
             <div class="control">
-              <input class="input add-option" type="text" id="option_${inputIndex}" required>
+              <input class="input add-option" type="text" id="option_${numberOption}" required>
             </div>
           </div>
     `;
-    addOptionDynamic.innerHTML += templateInput;
+    divOptionsQuestions.innerHTML += templateInput;
   }
 
 });
 
+removeOptionAnswer.addEventListener('click', (event) => {
+  event.preventDefault();
+  numberOption --;
+  if(numberOption <= 0){
+    numberOption = 0;
+  }
+  
+  const lastInput = divOptionsQuestions.lastElementChild;
+  if (lastInput) {
+    lastInput.remove();
+  }
+})
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  
+
+  if(numberOption === 2){
+    getOptionOfAnswer();
+  }else{
+    //fix
+    messageSystem({
+      text: 'You must have at least two answers minimum',
+      icon: 'error',
+      confirmButtonText: 'Continue'
+    });
+  }
+
+});
+
+const getOptionOfAnswer = () => {
   let inputs = document.querySelectorAll('.add-option');
   inputs.forEach((input) => {
     let getValueOption = input.value;
     arrayMultipleOption.push(getValueOption);
   });
-
-  console.log(arrayMultipleOption)
   
   const createQuestion = {
-    question: questionInput.value,
+    question: document.getElementById('question').value,
     multipleOption: arrayMultipleOption,
   };
 
@@ -58,13 +89,11 @@ form.addEventListener('submit', (event) => {
   });
 
   renderListQuestions();
-});
-
-
+}
 
 const renderListQuestions = () => { 
   contentListQuestions.classList.remove('d-none')
-  listQuestions.innerHTML = '';
+  divListQuestions.innerHTML = '';
   arrayGameQuestions.forEach((package, index) => {
       templateForPanelOfQuestions({
         indice: index,
@@ -95,21 +124,11 @@ const chooseCorrectAnswer = () => {
           uncheck !== checkbox ? uncheck.checked = false: '';
         });
         arrayGameQuestions[index].answer = answerSelected;
-        console.log(arrayGameQuestions)
       }
     });
   });
   
 };
-
-finishQuestion.addEventListener('click', () => {
-  let allAnswersSelected = checkAllAnswersSelected();
-  if (allAnswersSelected) {
-    console.log('Next');
-  } else {
-    console.log('empty fields');
-  }
-});
 
 const checkAllAnswersSelected = () => {
   let allAnswersSelected = true;
@@ -122,6 +141,32 @@ const checkAllAnswersSelected = () => {
   return allAnswersSelected;
 }
 
+saveQuestion.addEventListener('click', () => {
+  if(arrayGameQuestions.length ===  0){
+    messageSystem({
+      text: 'You need to add at least one question',
+      icon: 'error',
+      confirmButtonText: 'Continue'
+    });
+  }else{
+    let allAnswersSelected = checkAllAnswersSelected();
+    if (allAnswersSelected) {
+      console.log('Next');
+      console.log(arrayGameQuestions)
+
+      sendDatas(arrayGameQuestions);
+      
+
+    } else {
+      messageSystem({
+        text: 'You must add the answer of your question',
+        icon: 'error',
+        confirmButtonText: 'Continue'
+      });
+    }
+  }
+
+});
 
 const deleteQuestion = (index) => {
   arrayGameQuestions.splice(index, 1);
@@ -144,7 +189,7 @@ const templateForPanelOfQuestions = (_vm) => {
         </div>
       </a>
   `;
-  listQuestions.innerHTML += templateBox;
+  divListQuestions.innerHTML += templateBox;
 };
 
 const templateForAddAnswers = (_vm) => {
@@ -158,4 +203,29 @@ const templateForAddAnswers = (_vm) => {
     </div>
     `;
   addOptionsCard.innerHTML += templateCheckbox;
+};
+
+const messageSystem = (_vm) => {
+  Swal.fire({
+    title: _vm.title === '' ? '' :  _vm.title,
+    text: _vm.text,
+    icon: _vm.icon,
+    confirmButtonText: _vm.confirmButtonText
+  })
+};
+
+
+function sendDatas(_vm) {
+  console.log(_vm)
+
+  const data = {
+    example: _vm,
+  };
+  axios.post('back.php', data)
+  .then((response) => {
+      console.log(response);
+    })
+  .catch((error) => {
+      console.error(error);
+    });
 }

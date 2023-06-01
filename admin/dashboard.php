@@ -8,14 +8,19 @@
         <div class="field">
           <label class="label">Question</label>
           <div class="control">
-            <input class="input" type="text" id="Question" required>
+            <input class="input" type="text" id="question" required>
           </div>
         </div>
-        <div id="inputOptionDynamic"></div>
+        <div id="OptionsQuestions"></div>
 
         <div class="field">
           <div class="control">
-            <button class="button is-primary" id="optionsQuestion">Agregar nueva respuesta</button>
+            <button class="button is-primary" id="AddOptionAnswer">Agregar nueva respuesta</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" id="removeOptionAnswer">Quitar una opción</button>
           </div>
         </div>
         <div class="field">
@@ -35,7 +40,7 @@
           <p class="panel-heading">Card Added</p>
           <div class="listQuestions" id="listQuestions"></div>
           <div class="panel-block">
-            <button class="button is-link is-outlined is-fullwidth" id="finalizarPreguntas">
+            <button class="button is-link is-outlined is-fullwidth" id="saveQuestion">
               Save
             </button>
           </div>
@@ -43,5 +48,10 @@
       </div>
   </section>
 
+  <section>
+    <div id="menssages"></div>
+  </section>
 <?php include_once "layout/footer.php"?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/axios.min.js"></script>
 <script src="crud.js"></script>
