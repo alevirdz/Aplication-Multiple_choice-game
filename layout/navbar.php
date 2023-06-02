@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background:#6a6262 !important">
     <div class="navbar-brand">
       <a class="navbar-item" href="/web/beta_preguntados">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -12,13 +12,7 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Add questions
-        </a>
-  
-        
-      </div>
+      <div class="navbar-start"></div>
   
       <div class="navbar-end">
         <div class="navbar-item">

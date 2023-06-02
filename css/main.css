@@ -52,6 +52,34 @@ footer {
   display: none;
 }
 
+/* test */
+
+.contenido-personalizado{
+  display: flex;
+  align-items: center;
+  height: 100vh; 
+  width: 100vw;
+  /* overflow: hidden; */
+}
+.contenido-de-algo{
+  margin: auto;
+}
+.anchito{
+  margin: 1em;
+}
+
+.card.medida {
+  margin: 1em;
+  padding: 2em;
+  background: purple;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .anchito{
+    margin: 0em;
+  }
+  
+}
 
 /* titles cards */
 .title-card {
@@ -73,18 +101,18 @@ footer {
   border-radius: 0.75rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
   border: 0px !important;
-  margin-top: -13rem;
+  /* margin-top: -13rem; */
 }
 
 .card-width {
-  height: 13rem;
+  /* height: 13rem; */
   width: 24rem;
 }
 
-.background-card-width {
+/* .background-card-width {
   height: 13rem;
   width: 25rem;
-}
+} */
 
 .vertical-align {
   position: relative;
@@ -92,19 +120,22 @@ footer {
 }
 
 .rotate-right {
-  transform: rotate(3deg);
+  transform: rotate(4deg);
 }
 
 .rotate-left {
   transform: rotate(-3deg);
 }
 
+.rotate-normal{
+  transform: rotate(-0deg);
+}
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .card {
     border-radius: 0.75rem;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
     border: 0px !important;
-    margin-top: -13rem !important;
+    /* margin-top: -13rem !important; */
   }
 
   .card-width {
@@ -188,14 +219,21 @@ footer {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
+  .container{
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+    height: 42rem;
+  }
   .card-width-auto {
     height: auto;
     width: 22rem;
   }
 
-  .background-card-width-game {
+  /* .background-card-width-game {
     width: auto;
-  }
+  } */
 
   .vertical-align-questions {
     position: relative;
@@ -207,7 +245,7 @@ footer {
     border: 0.5px solid #dee2e6 !important;
     border-radius: 9999px;
     font-weight: 600;
-    width: 19em;
+    width: 56vw;
     transition: all 800ms ease-in-out;
   }
 
@@ -217,7 +255,7 @@ footer {
     border: 0.5px solid #dee2e6 !important;
     border-radius: 9999px;
     font-weight: 600;
-    width: 15em;
+    width: 48vw;
     transition: all 800ms ease;
   }
 
@@ -244,6 +282,27 @@ footer {
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .card-width-end {
     width: 23em;
+  }
+
+  .end-button {
+    color: var(--default-buttons);
+    border: 0.5px solid #dee2e6 !important;
+    border-radius: 9999px;
+    font-weight: 600;
+    width: 55vw;
+    transition: all 800ms ease-in-out;
+    margin-top: 1rem;
+  }
+  
+  .end-button:hover {
+    color: rgb(237, 233, 241);
+    background-color: var(--default-buttons);
+    border: 0.5px solid #dee2e6 !important;
+    border-radius: 9999px;
+    font-weight: 600;
+    width: 50vw;
+    transition: all 800ms ease;
+    margin-top: 1rem;
   }
 }
 
@@ -298,12 +357,13 @@ footer {
   transition: all 800ms ease;
 }
 
+
 .end-button {
   color: var(--default-buttons);
   border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
-  width: 330px;
+  width: auto;
   transition: all 800ms ease-in-out;
   margin-top: 1rem;
 }
@@ -314,7 +374,7 @@ footer {
   border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
-  width: 300px;
+  width: 9em;
   transition: all 800ms ease;
   margin-top: 1rem;
 }
