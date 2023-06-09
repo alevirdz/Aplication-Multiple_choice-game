@@ -23,7 +23,7 @@
           <form id="form">
             <div class="container" style="padding:2em;">
               <div class="field">
-                <label class="label">Question:</label>
+                <label class="label">Name question:</label>
                 <div class="control">
                   <input class="input" type="text" id="question" required>
                 </div>

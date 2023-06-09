@@ -150,12 +150,7 @@ saveQuestion.addEventListener('click', () => {
   }else{
     let allAnswersSelected = checkAllAnswersSelected();
     if (allAnswersSelected) {
-      console.log('Next');
-      console.log(arrayGameQuestions)
-
-      sendDatas(arrayGameQuestions);
-      
-
+      createQuestions(arrayGameQuestions);
     } else {
       messageSystem({
         text: 'You must add the answer of your question',
@@ -214,17 +209,45 @@ const messageSystem = (_vm) => {
 };
 
 
-function sendDatas(_vm) {
+function createQuestions(_vm) {
   console.log(_vm)
-
   const data = {
-    example: _vm,
+    questions: _vm,
+    action:'create'
   };
-  axios.post('back.php', data)
+  axios.post('questions.php', data)
   .then((response) => {
       console.log(response);
+      console.log(response.data);
     })
   .catch((error) => {
       console.error(error);
     });
+}
+
+const getQuestions = () => {
+  axios.post('questions.php', {action: 'get'})
+  .then((response) => {
+    console.log(response.data.id)
+    let collection = JSON.parse(response.data.question)
+    console.log(collection.example)
+  })
+  .catch ((error) => {
+    console.error(error);
+  })
+}
+
+const deleteQuestionBD = () => {
+  const data = {
+    action: 'delete',
+    id: 4
+  };
+  axios.post('questions.php', data)
+  .then((response) =>{
+    console.log(response.data);
+    // console.log(JSON.parse(response.data));s
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 }

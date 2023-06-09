@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../css/animate.min.css"/>
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href="../css/navbar.css">
+        <link rel="stylesheet" href="../css/admin.min.css"/>
         <link rel="icon" type="image/x-icon" href="../../images/solve.png">
     </head>
     <body>

@@ -12,7 +12,9 @@
 <?php include_once "layout/footer.php"?>
 <script src="js/data.js"></script>
 <script src="js/events.js"></script>
-<script src="js/templateWelcome.js"></script>
-<script src="js/templateQuestion.js"></script>
-<script src="js/templateResult.js"></script>
+<script src="js/Components/templateWelcome.js"></script>
+<script src="js/Components/templateQuestion.js"></script>
+<script src="js/Components/templateResult.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/petition.js"></script>
 <script src="js/main.js"></script>
