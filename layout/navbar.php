@@ -1,7 +1,9 @@
-<nav class="navbar" role="navigation" aria-label="main navigation" style="background:#6a6262 !important">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background:#f2f2f2 !important">
     <div class="navbar-brand">
       <a class="navbar-item" href="/web/beta_preguntados">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      <figure class="image is-128x128">
+        <img src="./images/solve.png">
+      </figure>
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

@@ -30,7 +30,7 @@ const loadListQuestions = () => {
     let package = questions[index];
     console.log(index)
     templateQuestion({
-      numberQuestion: index +1,
+      numberQuestion: index + 1,
       case: package,
     });
   }
@@ -60,23 +60,23 @@ const userChoose = () => {
 
       if (parseInt(getChoseAnswer) === parseInt(correctAnswer)) {
         showCorrectAnswer.true();
-        points += 1; 
+        points += 1;
         setTimeout(() => {
           currentQuestionNumber.classList.remove(animation.defaultInPut);
           currentQuestionNumber.classList.add(animation.defaultOutPut)
         }, 1000)
-        
+
       } else {
         showCorrectAnswer.true();
         currentQuestionNumber.classList.remove(animation.defaultInPut);
         setTimeout(() => {
           currentQuestionNumber.classList.add(animation.defaultOutPut)
         }, 1000);
-          
+
       }
-      
-      let questionLimit  = questions.length;
-      countQuestion === questionLimit ?  finish() :  next();
+
+      let questionLimit = questions.length;
+      countQuestion === questionLimit ? finish() : next();
       protectButton();
 
     })
@@ -84,7 +84,7 @@ const userChoose = () => {
 };
 
 const protectButton = () => {
-  let protectOptionsAnswers = document.getElementsByClassName('options-answers'); 
+  let protectOptionsAnswers = document.getElementsByClassName('options-answers');
   for (let i = 0; i < protectOptionsAnswers.length; i++) {
     protectOptionsAnswers[i].disabled = true;
   };
@@ -103,9 +103,9 @@ const finish = () => {
   setTimeout(() => {
     templateResult({
       title: 'Game over',
-      textButton: 're started'
+      textButton: 'Re started'
     });
-    document.getElementById('results').innerHTML = points +'/'+ countQuestion;
+    document.getElementById('results').innerHTML = points + '/' + countQuestion;
     document.getElementById('restart').addEventListener('click', () => {
       countQuestion = 0;
       points = 0;
@@ -115,6 +115,6 @@ const finish = () => {
 };
 
 const resetGame = () => {
-  divDynamicCard.innerHTML= '';
+  divDynamicCard.innerHTML = '';
   startGame();
 };

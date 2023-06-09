@@ -12,11 +12,10 @@ body {
   flex-direction: column;
 }
 
-
 footer {
   margin-top: auto;
-  background-color: #f9f9f9;
-  padding: 20px;
+  background-color: #f2f2f2;
+  padding: 1em !important;
 }
 
 :root {
@@ -54,17 +53,19 @@ footer {
 
 /* test */
 
-.contenido-personalizado{
+.contenido-personalizado {
   display: flex;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
   width: 100vw;
   /* overflow: hidden; */
 }
-.contenido-de-algo{
+
+.contenido-de-algo {
   margin: auto;
 }
-.anchito{
+
+.anchito {
   margin: 1em;
 }
 
@@ -75,10 +76,10 @@ footer {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
-  .anchito{
+  .anchito {
     margin: 0em;
   }
-  
+
 }
 
 /* titles cards */
@@ -127,9 +128,10 @@ footer {
   transform: rotate(-3deg);
 }
 
-.rotate-normal{
+.rotate-normal {
   transform: rotate(-0deg);
 }
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .card {
     border-radius: 0.75rem;
@@ -219,21 +221,18 @@ footer {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
-  .container{
+  .container {
     flex-grow: 1;
     margin: 0 auto;
     position: relative;
     width: auto;
     height: 42rem;
   }
+
   .card-width-auto {
     height: auto;
     width: 22rem;
   }
-
-  /* .background-card-width-game {
-    width: auto;
-  } */
 
   .vertical-align-questions {
     position: relative;
@@ -293,7 +292,7 @@ footer {
     transition: all 800ms ease-in-out;
     margin-top: 1rem;
   }
-  
+
   .end-button:hover {
     color: rgb(237, 233, 241);
     background-color: var(--default-buttons);
@@ -324,7 +323,7 @@ footer {
   border: 0.5px solid #dee2e6 !important;
   border-radius: 9999px;
   font-weight: 600;
-  width: auto;
+  width: 7em;
   transition: all 800ms ease-in-out;
 }
 
@@ -392,7 +391,7 @@ footer {
   padding: 0.5em 0.75em;
 }
 
-.listQuestions{
+.listQuestions {
   height: 316px;
   overflow-x: scroll;
   overscroll-behavior-x: contain;
