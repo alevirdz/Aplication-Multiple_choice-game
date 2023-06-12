@@ -2,9 +2,8 @@
 let countQuestion = 0;
 let points = 0;
 let controlTime = {
-  startTime: 8,
-  endTime: 5,
-  continue: 7000,
+  startTime: 10,
+  restartTime: 10,
 }
 let collectionQuestion = {};
 
@@ -75,21 +74,14 @@ const generateQuestion = () => {
 }
 
 const userChoose = () => {
-  let questionLimit = collectionQuestion.length;
-  if(countQuestion <= questionLimit){
-    
-    controlTime.startTime = 0;
-    time();
-    endTimeShowCorrect();
-    
-  }
+  time();
   document.querySelectorAll('button.list_' + countQuestion).forEach((element) => {
     element.addEventListener('click', (e) => {
       let getChoseAnswer = element.id
       let correctAnswer = collectionQuestion[countQuestion - 1].answer;
       let showCorrectAnswer = new Events(document.querySelector('.key_' + countQuestion + '_' + correctAnswer));
       let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
-      console.log(currentQuestionNumber)
+
       if (parseInt(getChoseAnswer) === parseInt(correctAnswer)) {
         showCorrectAnswer.true();
         points += 1;
@@ -98,13 +90,12 @@ const userChoose = () => {
           currentQuestionNumber.classList.add(animation.defaultOutPut)
         }, 1000)
 
-      } else {
+      }else {
         showCorrectAnswer.true();
         currentQuestionNumber.classList.remove(animation.defaultInPut);
         setTimeout(() => {
           currentQuestionNumber.classList.add(animation.defaultOutPut)
         }, 1000);
-
       }
 
       let questionLimit = collectionQuestion.length;
@@ -151,35 +142,38 @@ const resetGame = () => {
   startGame();
 };
 
-const time = () => {
-  controlTime.startTime++;
-  let divTime = document.getElementById('time_'+ countQuestion)
-  !!divTime ? divTime.innerHTML = controlTime.startTime : '';
 
-  if (controlTime.startTime <= (controlTime.endTime -1)) setTimeout(time, 1000);
-}
+const time = () => {
+  if (controlTime.startTime > 0) {
+    controlTime.startTime--;
+    let divTime = document.getElementById('time_'+ countQuestion)
+    !!divTime ? divTime.innerHTML = controlTime.startTime + 1: '';
+    setTimeout(time, 1000);
+    
+  }else{
+    endTimeShowCorrect();
+    controlTime.startTime = controlTime.restartTime;
+  }
+};
 
 const endTimeShowCorrect = () => {
-  if (controlTime.startTime <= (controlTime.endTime -1)) {
-    setTimeout(() => {
-      let correctAnswer = collectionQuestion[countQuestion - 1].answer;
-      let showCorrectAnswer = document.querySelector('.key_' + countQuestion + '_' + correctAnswer);
-      console.log(showCorrectAnswer)
-      if (showCorrectAnswer) {
-        showCorrectAnswer.classList.add('true');
+  setTimeout(() => {
+    let correctAnswer = collectionQuestion[countQuestion - 1].answer;
+    let showCorrectAnswer = document.querySelector('.key_' + countQuestion + '_' + correctAnswer);
+    console.log(showCorrectAnswer)
+    if (showCorrectAnswer) {
+      showCorrectAnswer.classList.add('true');
 
-        let questionLimit = collectionQuestion.length;
-        countQuestion === questionLimit ? finish() : next();
-        protectButton();
+      let questionLimit = collectionQuestion.length;
+      countQuestion === questionLimit ? finish() : next();
+      protectButton();
 
-        let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
-        setTimeout(() => {
-          currentQuestionNumber.classList.remove(animation.defaultInPut);
-          currentQuestionNumber.classList.add(animation.defaultOutPut)
-        }, 1000);
-
-
-      }
-    }, controlTime.continue);
-  };
+      let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
+      setTimeout(() => {
+        currentQuestionNumber.classList.remove(animation.defaultInPut);
+        currentQuestionNumber.classList.add(animation.defaultOutPut)
+      }, 1000);
+    };
+    
+  }, 500);
 };
