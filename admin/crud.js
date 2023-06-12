@@ -225,9 +225,11 @@ function createQuestions(_vm) {
     });
 }
 
+let getIDBD = ''
 const getQuestions = () => {
   axios.post('questions.php', {action: 'get'})
   .then((response) => {
+    getIDBD = response.data.id
     console.log(response.data.id)
     let collection = JSON.parse(response.data.question)
     console.log(collection.example)
@@ -240,7 +242,7 @@ const getQuestions = () => {
 const deleteQuestionBD = () => {
   const data = {
     action: 'delete',
-    id: 4
+    id: getIDBD
   };
   axios.post('questions.php', data)
   .then((response) =>{
