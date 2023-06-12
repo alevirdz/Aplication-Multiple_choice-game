@@ -1,21 +1,25 @@
 <?php
 include_once 'core/database.php';
 
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$namebase = 'choice_game_json';
+
 $getContentJson = file_get_contents('php://input');
 $convertToArray = json_decode($getContentJson, true);
 $method = $convertToArray['action'];
 
 if (isset($method)) {
-  // Ejecutar el método correspondiente
   switch ($method) {
     case 'get':
-      getQuestion();
+      getQuestion($host, $user, $pass, $namebase);
       break;
     case 'create':
-      createQuestion();
+      createQuestion($host, $user, $pass, $namebase);
       break;
     case 'delete':
-      deleteController();
+      deleteController($host, $user, $pass, $namebase);
       break;
     default:
       break;
@@ -25,9 +29,9 @@ if (isset($method)) {
 }
 
 
-function createQuestion()
+function createQuestion($host, $user, $pass, $namebase)
 {
-    $database = new Database("localhost", "root", "", "choice_game_json");
+    $database = new Database($host, $user, $pass, $namebase);
     if ($database->connect()) {
       $getJson = file_get_contents('php://input');
       $results = $database->saveQuestion($getJson);
@@ -37,9 +41,9 @@ function createQuestion()
     }
 }
 
-function getQuestion()
+function getQuestion($host, $user, $pass, $namebase)
 {
-  $database = new Database("localhost", "root", "", "choice_game_json");
+  $database = new Database($host, $user, $pass, $namebase);
   if ($database->connect()) {
     $results = $database->getQuestion();
     if($results !== 'empty'){
@@ -54,9 +58,9 @@ function getQuestion()
   }
 }
 
-function deleteController()
+function deleteController($host, $user, $pass, $namebase)
 {
-  $database = new Database("localhost", "root", "", "choice_game_json");
+  $database = new Database($host, $user, $pass, $namebase);
   if ($database->connect()) {
     $getJson = file_get_contents('php://input');
     $convertToArray = json_decode($getJson, true);

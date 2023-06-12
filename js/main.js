@@ -1,6 +1,11 @@
 //Inizialite Always
 let countQuestion = 0;
 let points = 0;
+let controlTime = {
+  startTime: 8,
+  endTime: 5,
+  continue: 7000,
+}
 let collectionQuestion = {};
 
 //Div's HTML
@@ -51,7 +56,12 @@ const loadListQuestions = () => {
 };
 
 const generateQuestion = () => {
-  countQuestion += 1;
+  let questionLimit = collectionQuestion.length;
+  // if(questionLimit > countQuestion ){
+  if(countQuestion <  questionLimit){
+    countQuestion += 1;
+  }
+  
   if (countQuestion > 1) {
     setTimeout(() => {
       let currentQuestion = new Events(document.querySelector('.question-' + (countQuestion - 1)));
@@ -65,12 +75,21 @@ const generateQuestion = () => {
 }
 
 const userChoose = () => {
+  let questionLimit = collectionQuestion.length;
+  if(countQuestion <= questionLimit){
+    
+    controlTime.startTime = 0;
+    time();
+    endTimeShowCorrect();
+    
+  }
   document.querySelectorAll('button.list_' + countQuestion).forEach((element) => {
     element.addEventListener('click', (e) => {
       let getChoseAnswer = element.id
       let correctAnswer = collectionQuestion[countQuestion - 1].answer;
       let showCorrectAnswer = new Events(document.querySelector('.key_' + countQuestion + '_' + correctAnswer));
       let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
+      console.log(currentQuestionNumber)
       if (parseInt(getChoseAnswer) === parseInt(correctAnswer)) {
         showCorrectAnswer.true();
         points += 1;
@@ -130,4 +149,37 @@ const finish = () => {
 const resetGame = () => {
   divDynamicCard.innerHTML = '';
   startGame();
+};
+
+const time = () => {
+  controlTime.startTime++;
+  let divTime = document.getElementById('time_'+ countQuestion)
+  !!divTime ? divTime.innerHTML = controlTime.startTime : '';
+
+  if (controlTime.startTime <= (controlTime.endTime -1)) setTimeout(time, 1000);
+}
+
+const endTimeShowCorrect = () => {
+  if (controlTime.startTime <= (controlTime.endTime -1)) {
+    setTimeout(() => {
+      let correctAnswer = collectionQuestion[countQuestion - 1].answer;
+      let showCorrectAnswer = document.querySelector('.key_' + countQuestion + '_' + correctAnswer);
+      console.log(showCorrectAnswer)
+      if (showCorrectAnswer) {
+        showCorrectAnswer.classList.add('true');
+
+        let questionLimit = collectionQuestion.length;
+        countQuestion === questionLimit ? finish() : next();
+        protectButton();
+
+        let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
+        setTimeout(() => {
+          currentQuestionNumber.classList.remove(animation.defaultInPut);
+          currentQuestionNumber.classList.add(animation.defaultOutPut)
+        }, 1000);
+
+
+      }
+    }, controlTime.continue);
+  };
 };

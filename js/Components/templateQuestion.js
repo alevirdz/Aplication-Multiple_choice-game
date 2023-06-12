@@ -6,6 +6,9 @@ const templateQuestion = (_vm) => {
         <div class="card card-width rotate-right">
           <div class="card-content text-center">
             <div class="rotate-normal">
+            <div class="control-time"> 
+            <p class="time" id="time_${_vm.numberQuestion}" ></p>
+            </div>
               <p class="title-card mt-1">Pregunta: ${_vm.numberQuestion}</p>
               <div class="content"><p class="subtitle-card">${_vm.case.question}</p>
                 <div class="item-button">
