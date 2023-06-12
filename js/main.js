@@ -5,6 +5,7 @@ let controlTime = {
   startTime: 10,
   restartTime: 10,
 }
+let timeoutId;
 let collectionQuestion = {};
 
 //Div's HTML
@@ -56,7 +57,6 @@ const loadListQuestions = () => {
 
 const generateQuestion = () => {
   let questionLimit = collectionQuestion.length;
-  // if(questionLimit > countQuestion ){
   if(countQuestion <  questionLimit){
     countQuestion += 1;
   }
@@ -77,12 +77,14 @@ const userChoose = () => {
   time();
   document.querySelectorAll('button.list_' + countQuestion).forEach((element) => {
     element.addEventListener('click', (e) => {
+      clearTimeout(timeoutId); 
       let getChoseAnswer = element.id
       let correctAnswer = collectionQuestion[countQuestion - 1].answer;
       let showCorrectAnswer = new Events(document.querySelector('.key_' + countQuestion + '_' + correctAnswer));
       let currentQuestionNumber = document.querySelector('.question-' + countQuestion);
 
       if (parseInt(getChoseAnswer) === parseInt(correctAnswer)) {
+        controlTime.startTime = controlTime.restartTime;
         showCorrectAnswer.true();
         points += 1;
         setTimeout(() => {
@@ -91,6 +93,7 @@ const userChoose = () => {
         }, 1000)
 
       }else {
+        controlTime.startTime = controlTime.restartTime;
         showCorrectAnswer.true();
         currentQuestionNumber.classList.remove(animation.defaultInPut);
         setTimeout(() => {
@@ -146,13 +149,15 @@ const resetGame = () => {
 const time = () => {
   if (controlTime.startTime > 0) {
     controlTime.startTime--;
+    console.log(controlTime.startTime)
     let divTime = document.getElementById('time_'+ countQuestion)
     !!divTime ? divTime.innerHTML = controlTime.startTime + 1: '';
-    setTimeout(time, 1000);
+    timeoutId = setTimeout(time, 1000);
     
   }else{
     endTimeShowCorrect();
     controlTime.startTime = controlTime.restartTime;
+    clearTimeout(timeoutId); 
   }
 };
 
@@ -160,7 +165,6 @@ const endTimeShowCorrect = () => {
   setTimeout(() => {
     let correctAnswer = collectionQuestion[countQuestion - 1].answer;
     let showCorrectAnswer = document.querySelector('.key_' + countQuestion + '_' + correctAnswer);
-    console.log(showCorrectAnswer)
     if (showCorrectAnswer) {
       showCorrectAnswer.classList.add('true');
 
