@@ -217,8 +217,8 @@ function createQuestions(_vm) {
   };
   axios.post('questions.php', data)
   .then((response) => {
-      console.log(response);
       console.log(response.data);
+      // if(response.data === )
     })
   .catch((error) => {
       console.error(error);

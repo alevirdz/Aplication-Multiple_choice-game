@@ -1,0 +1,29 @@
+.d-none{
+    display: none;
+}
+.button {
+    background-color: hsl(0deg, 0%, 100%);
+    border-color: hsl(0deg, 0%, 86%);
+    border-width: 1px;
+    color: hsl(0deg, 0%, 21%);
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(0.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.button.is-info {
+    background-color: #d08aff !important;
+    border-color: transparent;
+    color: #fff;
+}
+
+.button.is-error {
+    background-color: #c53c7b !important;
+    border-color: transparent;
+    color: #fff;
+}

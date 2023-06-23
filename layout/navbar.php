@@ -19,6 +19,9 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+            <div id="optionEndGame">
+            <a class="button is-primary d-none" id="endGame">Finalizar</a>
+            </div>
             <a class="button is-primary">
               <strong>Sign up</strong>
             </a>

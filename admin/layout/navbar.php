@@ -1,55 +1,83 @@
-<nav class="navbar" role="navigation" aria-label="main navigation" style="background: rgb(0 0 0) !important;">
+<nav id="navbar-main" class="navbar is-fixed-top">
     <div class="navbar-brand">
-      <a class="navbar-item" style="background: #afafaf !important">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">  
-        <a class="navbar-item" href="https://github.com/alevirdz/Multiple_choice_game" style="color:#9aa4ad !important;">
-          Documentation
-        </a>   
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-light" href="/web/beta_preguntados">
-              Log out
-            </a>
-          </div>
+        <a class="navbar-item is-hidden-desktop jb-aside-mobile-toggle">
+            <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
+        </a>
+        <div class="navbar-item has-control">
+            <div class="control"><input placeholder="Search everywhere..." class="input"></div>
         </div>
-      </div>
     </div>
-  </nav>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    
-    // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    
-    // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
-    
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
-    
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-    
-      });
-    });
-    
-    });
-    </script>
+    <div class="navbar-brand is-right">
+        <a class="navbar-item is-hidden-desktop jb-navbar-menu-toggle" data-target="navbar-menu">
+            <span class="icon"><i class="mdi mdi-dots-vertical"></i></span>
+        </a>
+    </div>
+    <div class="navbar-menu fadeIn animated faster" id="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown has-dropdown-with-icons has-divider is-hoverable d-none">
+                <a class="navbar-link is-arrowless">
+                    <span class="icon"><i class="mdi mdi-menu"></i></span>
+                    <span>Sample Menu</span>
+                    <span class="icon">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </span>
+                </a>
+                <div class="navbar-dropdown">
+                    <a href="profile.html" class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-account"></i></span>
+                        <span>My Profile</span>
+                    </a>
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-settings"></i></span>
+                        <span>Settings</span>
+                    </a>
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-email"></i></span>
+                        <span>Messages</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-logout"></i></span>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown has-dropdown-with-icons has-divider has-user-avatar is-hoverable">
+                <a class="navbar-link is-arrowless">
+                    <div class="is-user-avatar">
+                        <img src="https://avatars.dicebear.com/v2/initials/A.svg" alt="Alevi">
+                    </div>
+                    <div class="is-user-name"><span>Alevi Rodriguez</span></div>
+                    <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
+                </a>
+                <div class="navbar-dropdown">
+                    <a href="#!" class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-account"></i></span>
+                        <span>My Profile</span>
+                    </a>
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-settings"></i></span>
+                        <span>Settings</span>
+                    </a>
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-email"></i></span>
+                        <span>Messages</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        <span class="icon"><i class="mdi mdi-logout"></i></span>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </div>
+            <a href="https://github.com/alevirdz/Multiple_choice_game" title="About" class="navbar-item has-divider is-desktop-icon-only">
+                <span class="icon"><i class="mdi mdi-help-circle-outline"></i></span>
+                <span>About</span>
+            </a>
+            <a title="Log out" class="navbar-item is-desktop-icon-only" href="/">
+                <span class="icon"><i class="mdi mdi-logout"></i></span>
+                <span>Log out</span>
+            </a>
+        </div>
+    </div>
+</nav>

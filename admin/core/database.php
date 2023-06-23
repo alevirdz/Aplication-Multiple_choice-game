@@ -47,11 +47,12 @@ class Database
     public function saveQuestion($_getJson)
     {
         try {
+            $jsonQuestions = json_encode($_getJson);
             $stmt = $this->conn->prepare("INSERT INTO questions_game (question) VALUES (?)");
-            $stmt->bindParam(1, $_getJson);
+            $stmt->bindParam(1, $jsonQuestions);
             $stmt->execute();
 
-            echo "Question saved successfully";
+            echo 'true';
         } catch (PDOException $e) {
             echo "Connection error: " . $e->getMessage();
         }

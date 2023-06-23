@@ -1,8 +1,14 @@
-<?php include_once "layout/head.php"?>
-<?php include_once "layout/navbar.php"?>
+<?php include_once "layout/head.php" ?>
+<div id="app">
+  <?php include_once "layout/navbar.php" ?>
+  <?php include_once "layout/aside.php" ?>
+  <?php include_once "components/hero.php" ?>
 
 
-<section class="section">
+
+  <section class="section is-main-section">
+
+    <section class="section">
       <div class="container">
         <article class="panel is-primary">
           <div class="panel-heading" style="background-color: rgb(147 51 234) !important;">
@@ -11,19 +17,19 @@
                 <p>Add yours questions</p>
               </div>
               <div class="column is-2" style="width:10.66667%;">
-                  <button class="button is-info" id="AddOptionAnswer" style="background: #d08aff">Add option</button>
+                <button class="button is-info" id="AddOptionAnswer">Add option</button>
               </div>
-              <div class="column is-2" style="width:10.66667%"> 
-                  <button class="button is-info" id="removeOptionAnswer" style="background: #c53c7b">Remove option</button>
+              <div class="column is-2" style="width:10.66667%">
+                <button class="button is-error" id="removeOptionAnswer">Remove option</button>
               </div>
             </div>
           </div>
-          
-          
+
+
           <form id="form">
             <div class="container" style="padding:2em;">
               <div class="field">
-                <label class="label">Name question:</label>
+                <label class="label">Question:</label>
                 <div class="control">
                   <input class="input" type="text" id="question" required>
                 </div>
@@ -34,13 +40,15 @@
               <button class="button is-link is-outlined is-fullwidth" type="submit">Add question</button>
             </div>
           </form>
-          
-          
+
+
         </article>
       </div>
+    </section>
   </section>
 
 
+  
   <!-- content list question -->
   <section class="section d-none" id="content-list-question">
       <div class="container">
@@ -56,11 +64,5 @@
       </div>
   </section>
 
-  <section>
-    <div id="menssages"></div>
-  </section>
-  
-<?php include_once "layout/footer.php"?>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../js/axios.min.js"></script>
-<script src="crud.js"></script>
+  <?php include "layout/footer.php" ?>
+</div>
